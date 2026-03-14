@@ -36,7 +36,7 @@ useEffect(() => {
   };
   const totalPages = data?.total_pages || 0;
 
-console.log(data);
+//console.log(data);
 
   return(
     <div className={css.app}>
