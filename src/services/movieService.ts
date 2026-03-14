@@ -3,12 +3,7 @@ import type { Movie } from '../types/movie';
 
 //const myKey = import.meta.env.VITE_TMDB_TOKEN;
 
-// export interface TMDBResponse{
-//   results: Movie[];
-//   total_pages: number;
-//   total_results: number;
-//   page: number;
-// }
+
 
 const instance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
