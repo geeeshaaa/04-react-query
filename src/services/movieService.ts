@@ -11,31 +11,27 @@ export interface TMDBResponse{
 }
 
 const instance = axios.create({
-  baseURL: 'https://api.themoviedb.org/3/',
+  baseURL: 'https://api.themoviedb.org/3',
   headers: {
     Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
     Accept: 'application/json',
   },
 });
 
-// export default async function fetchMovies  (query: string): Promise<TMDBResponse>  {
-//   const { data } = await instance.get<TMDBResponse>('/search/movie', {
-//     params: {
-//       query,
-//       language: 'en-US',
-//       include_adult: false,
-//     },
-//   });
-//   return data;
-// };
-
-export const fetchMovies = async (query: string): Promise<TMDBResponse> => {
-  const { data } = await instance.get<TMDBResponse>('/search/movie', {
+export interface MoviesResponse {
+  results: Movie[];
+  total_pages: number; 
+  total_results: number;
+  page: number;
+}
+export const fetchMovies = async (query: string, page: number = 1): Promise<MoviesResponse> => {
+  const response = await instance.get<MoviesResponse>(`/search/movie`, {
     params: {
       query,
-      language: 'en-US',
+      page,
       include_adult: false,
+      language: 'en-US',
     },
   });
-  return data;
+  return response.data;
 };

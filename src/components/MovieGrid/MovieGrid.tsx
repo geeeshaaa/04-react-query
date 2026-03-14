@@ -1,4 +1,3 @@
-// src/components/MovieGrid/MovieGrid.tsx
 import type { Movie } from '../../types/movie';
 import css from './MovieGrid.module.css';
 
